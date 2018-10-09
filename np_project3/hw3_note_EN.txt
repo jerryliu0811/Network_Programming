@@ -1,0 +1,87 @@
+Note:
+
+This homework consists of three parts
+
+Part1. CGI (Unix)
+		
+	In this part, You can test your CGI program by the Apache of np server.
+
+	Make sure that the .cgi file is in the directory of your ~/public_html ("$home/public_html/hello.cgi") 
+	and executable (chmod 755 hello.cgi), than connect to the server by the browser 
+		 
+	input "http://people.cs.nctu.edu.tw/~yourAccount/hello.cgi", where "yourAccount is the account of your npServer instead of your student ID.
+		e.g.	
+			yourAccount = cltsai0556029
+			-> http://people.cs.nctu.edu.tw/~cltsai0556029/hello.cgi
+
+	You must run the hw3.cgi by the "send" button of the form_get.htm, 
+	which can be tested after filling in all the required variables in "http://people.cs.nctu.edu.tw/~yourAccount/form_get.htm" 
+
+	Notice that the test files should be in the same directory with your CGI while testing.
+
+	The output should contain the content of the testcase. Don't forget to put the test result between <b> and </b> for displaying in the browser
+		e.g.  <script>document.all['m1'].innerHTML += "% <b>removetag test.html</b><br>";</script>
+
+	If you want to display "<" or ">", you need to replace it to "&lt" or "&gt", please refer to the following: http://www.web2generators.com/html/entities
+
+	You will get the penalty if your program could not support Nonblocking.
+
+	If there is no response from one of the connections from CGI to ras/rwg server, the others should work well.
+	You can refer to HTTP_ConcurrentClient.pdf for the implementation details.
+
+
+Part2. HTTP SERVER (Unix)
+
+	After your http server is finished, run and bind one port, then the address will be "http://nplinuxN.cs.nctu.edu.tw:port/"
+
+	You can test your http server by running hello.cgi
+		e.g: run the server with port 5566 on nplinux1:
+			http://nplinux1.cs.nctu.edu.tw:5566/hellow.cgi
+
+	Your hw3.cgi will be tested in the same way in Part1 by your http server
+	i.e. access http://nplinux1.cs.nctu.edu.tw:5566/form_get.htm, then filling the variables required
+
+	Please do not use any Opensource of HTTP to implement Part2. your program should be able to do the following:
+	1. handle the connection from the browser, parse the request from the browser, and set the environment variable for CGI
+	2. call CGI, return the result of it to the browser
+
+	You are suggested to start from how to parse the request from the browser.
+
+
+Part3. HTTP SERVER + CGI (winsock)
+
+	We provide the framework which can be compiled on visual studio (later than version 2008 sp1)
+	In this part, cgi and http server are combined together in one program.
+	Please refer to winsock.pdf for more information.
+
+	You can implement Nonblocking by API WASAsyncSelect easily, than implement the corresponding event to each action
+	Since the program combines HTTP and CGI, it is both server(for browser) and client(for ras/rwg). Thus, you need to define another
+	messege to handle different event.
+
+	You can not get any credit without using WASAsyncSelect.
+
+==================================================================================================================================
+Demo date: 2017.12.11
+
+Unix (HTTP & CGI) : 35%
+windows (Winsock) : 35%
+coding test : 25%
+git commit : 5%
+
+Make sure that you must do version control by git.
+
+The CGI we probide is programmed by Perl, which can be used to test your HTTP Server.
+But all the NP homework in this project should be implemented by C/C++.
+
+Please upload your source code before 12/10 23:59.
+
+==================================================================================================================================
+Notice!!
+
+Please do not upload the testcase and any source code given by T.A. and any file related to version control (.git*)
+Do not upload the visual studio project file. You only need to upload the source code you implement.
+ZIP file is required. Do not upload RAR
+
+You will get penalty (-1~-10) for breaking any of the rules above.
+
+

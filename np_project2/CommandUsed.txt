@@ -1,0 +1,16 @@
+git add OOXX
+git commit -m "some messenge"
+git push https://jerryliu0811@bitbucket.org/jerryliu0811/np_project1_0656508.git master
+
+server:
+	g++ -g -Wall -std=c++11 server.cpp -o server.o && ./server.o 5577
+
+client:
+	nc localhost 5577
+	./delayclient.o localhost 5614 project2_testing_data/test/test1.txt > mytest1.txt
+	diff --strip-trailing-cr mytest1.txt project2_testing_data/ans/ans
+
+
+clear share memory:
+	ipcs -m
+	ipcrm -m OXOXOX
